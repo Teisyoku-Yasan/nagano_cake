@@ -21,9 +21,9 @@
 			<td><%= genre.name %></td>
 			<td>
 				<% if genre.is_active == false %>
-					<p>無効</p>
+					無効
 				<% else %>
-					<p>有効</p>
+					有効
 				<% end %>
 			</td>
 			<td><%= link_to "編集する", edit_admins_genre_path(genre) %></td>
