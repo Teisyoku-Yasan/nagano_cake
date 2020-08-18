@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :admins do
-    get 'genres/index'
-    get 'genres/edit'
-  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # メインページルーティング
