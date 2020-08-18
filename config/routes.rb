@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :admins do
+    get 'orders/index'
+    get 'orders/show'
+  end
+  namespace :admins do
     get 'genres/index'
     get 'genres/edit'
   end
