@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="row">
+		<h3>商品新規登録</h3><br>
+		<%= form_for(@product, url: admins_products_path) do |f| %>
+		<div class="col-xs-5">
+			<div class="product-img">
+			<%= image_tag 'sample_image.jpeg', id: "file-preview", :size => '350x300' %>
+		    </div>
+			<div class="product-new-form">
+				<%= f.attachment_field :image %>
+			</div>
+	    </div>
+	    <div class="col-xs-5">
+	    	<table class="new-form-table">
+	    		<tbody>
+	    			<tr>
+	    				<th>商品名</th>
+	    				<td><%= f.text_field :name, class: "form-control" %></td>
+	    			</tr>
+	    			<tr>
+	    				<th>商品説明</th>
+	    				<td><%= f.text_area :introduction, class: "form-control" %></td>
+	    			</tr>
+	    			<tr>
+	    				<th>ジャンル</th>
+	    				<td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+	    			</tr>
+	    			<tr>
+	    				<th>税抜価格</th>
+	    				<td><%= f.text_field :price, class: "form-control" %></td>
+	    				<td>円</td>
+	    			</tr>
+	    			<tr>
+	    				<th>販売ステータス</th>
+	    				<td><%= f.select :is_active, [["販売停止中",0],["販売中",1]], include_blank: "--選択してください--" %></td>
+	    			</tr>
+	    		</tbody>
+	    	</table>
+	    </div>
+	    <div class="col-xs-2">
+	    	<%= f.submit '新規登録', class: "btn btn-success btn-new-register btn-lg" %>
+	    </div>
+	    <% end %>
+	</div>
+</div>
