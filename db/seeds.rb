@@ -16,7 +16,7 @@ Genre.create!(
 
 10.times do |i|
 	Product.create!(
-		name: 'いちごケーキ',
+		name: "いちごケーキ#{i+1}",
 		introduction: 'おいしいいちごケーキです！',
 		genre_id: Genre.find(1).id,
 		price: 500
@@ -25,7 +25,7 @@ end
 
 12.times do |i|
 	Product.create!(
-		name: 'チョコクッキー',
+		name: "チョコクッキー#{i+1}",
 		introduction: 'サクサクのチョコクッキーです',
 		genre_id: Genre.find(2).id,
 		price: 300
