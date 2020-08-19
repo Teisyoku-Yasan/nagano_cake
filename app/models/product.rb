@@ -3,6 +3,7 @@ class Product < ApplicationRecord
 	has_many :order_details, dependent: :destroy
 	belongs_to :genre
 
+<<<<<<< HEAD
 	attachment :image
 
 	validates :name, presence: true, length: {minimum: 1, maximum:15}
@@ -12,4 +13,12 @@ class Product < ApplicationRecord
 	validates :price, numericality: true
 	validates :is_active, inclusion: {in: [true, false]}
 
+=======
+
+	#消費税込みにする
+	def syouhizei(price)
+		@price = price * 1.08
+		@price.round
+	end
+>>>>>>> origin/master
 end
