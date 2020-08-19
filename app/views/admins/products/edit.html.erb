@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
-		<h3>商品新規登録</h3><br>
-		<%= form_for(@product, url: admins_products_path) do |f| %>
+		<h3>商品編集</h3><br>
+		<%= form_for(@product, url: admins_product_path) do |f| %>
 		<div class="col-xs-5">
 			<div class="product-img">
 			<%= attachment_image_tag @product, :image, :size => '300x250', id: "file-preview" %>
@@ -38,7 +38,7 @@
 	    	</table>
 	    </div>
 	    <div class="col-xs-2">
-	    	<%= f.submit '新規登録', class: "btn btn-primary btn-new-register btn-lg" %>
+	    	<%= f.submit '変更を保存', class: "btn btn-primary btn-new-register btn-lg" %>
 	    </div>
 	    <% end %>
 	</div>
