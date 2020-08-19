@@ -1,0 +1,78 @@
+<div class="container">
+
+    <h1>注文履歴詳細</h1>
+    <p><%= notice %></p>
+    <div class="field">
+        購入者
+        <%= link_to edit_admins_customer_path(@customer) do %>
+            <%= @order.customer.last_name %><%= @order.customer.first_name %>
+        <% end %>
+    </div>
+
+    <div class="field">
+        配送先
+        <%= @order.postal_code %>
+        <%= @order.street_address %>
+        <%= @order.name %>
+    </div>
+    
+    <div class="field">
+        支払方法
+        <% if @order.payment_method == 0 %>
+            クレジットカード
+        <% elsif @order.payment_method == 1 %>
+            銀行振り込み
+        <% end %>
+    </div>
+
+    <div class="form-group">
+        注文ステータス
+        <%= form_for(@order, url:admins_order_path) do |f| %>
+            <%= f.select :order_status, {"入金待ち": 0, "入金確認": 1, "製作中": 2, "発送準備中": 3, "発送済み": 4}, {class:"form-control"}  %>
+            <%= f.submit "更新", class:"btn btn-sm btn-primary" %>
+        <% end %>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>単価（税込）</th>
+                <th>数量</th>
+                <th>小計</th>
+                <th>制作ステータス</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @order_details.each do |order_detail| %>
+                <tr>
+                    <td><%= order_detail.product.name %></td>
+                    <td><%= order_detail.price %></td>
+                    <td><%= order_detail.quantity %></td>
+                    <td><%= order_detail.price * order_detail.quantity %></td>
+                    <td>
+                        <%= form_for(order_detail, url:admins_order_detail_path) do |f| %>
+                            <%= f.select :making_status, {"着手不可": 0, "製作待ち": 1, "製作中": 2, "製作完了": 3}, {class:"form-control"} %>
+                            <%= f.submit "更新", class:"btn btn-sm btn-primary" %></td>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div class="field">
+        商品合計
+        <%= @order.total_price %> 円
+    </div>
+    <div class="field">
+        送料
+        <%= @order.freight %> 円
+    </div>
+    <div class="field">
+        請求金額合計
+        <%= @order.total_price + @order.freight %> 円
+    </div>
+
+</div>

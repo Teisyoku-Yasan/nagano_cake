@@ -1,8 +1,6 @@
 <div class="container">
 
-
     <h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h1>
-
 
     <div class="field">
         顧客ID
@@ -44,9 +42,8 @@
     </div>
 
 
-
-
     <%= link_to "編集する", edit_admins_customer_path(@customer), class:"btn btn-primary" %>
-    <%= link_to "注文履歴一覧を見る", admins_orders_path, class:"btn btn-primary" %>
+    <%# リンク先に「order_sort」の「1」と、現在いるページの「customer_id」の値を一緒に送る / この会員の注文履歴だけ見られる %>
+    <%= link_to "注文履歴一覧を見る", admins_orders_path(order_sort: 0, customer_id: @customer.id), class:"btn btn-primary" %>
 
 </div>
