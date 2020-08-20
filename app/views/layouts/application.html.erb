@@ -15,7 +15,9 @@
 
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <span style="font-size: 30px;">NaganoCake</span>
+          <span style="font-size: 30px;">
+            <%= link_to "NaganoCake", root_path %> 
+          </span>
           <% if customer_signed_in? %>
               <span>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</span>
           <% end %>
