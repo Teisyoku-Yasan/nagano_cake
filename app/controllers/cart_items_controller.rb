@@ -4,7 +4,8 @@ class CartItemsController < ApplicationController
   def create
   	@cart_item = current_customer.cart_items.build(cart_item_params)
   	@current_item = CartItem.find_by(product_id: @cart_item.product_id, customer_id: current_customer.id)
-  	if @current_item.nil?
+  	#カート内に同じ商品がなければ追加、あれば商品数合算
+    if @current_item.nil?
   		@cart_item.save
   		redirect_to cart_items_path
   	else
