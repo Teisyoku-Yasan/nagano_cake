@@ -9,7 +9,7 @@ class Admins::OrdersController < ApplicationController
       @customer = Customer.find(params[:customer_id])
       @orders = Order.where(customer_id: @customer.id).page(params[:page])
     when "1"
-      @orders = Order.where(created_at: Date.today).page(params[:page])
+      @orders = Order.where(created_at: Time.zone.now.all_day).page(params[:page])
     else
       @orders = Order.page(params[:page])
     end

@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :shippings, dependent: :destroy
 
+
   # 会員バリデーション
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
