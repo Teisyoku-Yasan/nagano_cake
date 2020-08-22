@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  resource :customers, only: [:edit, :update] 
+  resource :customers, only: [:edit, :update]
     #マイページ表示
   get 'customers/my_page' => 'users#show'
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/thanks' => 'orders#thanks'
   resources :shippings, only: [:index, :create, :edit, :update, :destroy]
-  
+
   resources :cart_items, only: [:create, :index, :update, :destroy] do
     #カート空にする
     collection do

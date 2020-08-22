@@ -9,7 +9,7 @@
 			<% end %>
 		</div>
 		<div class="col-sm-9">
-			<%= attachment_image_tag @product, :image_id, :fill, 120, 90, format: 'png',fallback: "no_image.png" %>
+			<%= attachment_image_tag @product, :image_id, :fill, 320, 240, format: 'png',fallback: "no_image.png",size:'320x240' %>
 			<h3><%= @product.name %></h3>
 			<p><%= @product.introduction %></p>
 			<h4>¥<%= @product.syouhizei(@product.price) %><span>（税込）</span>
