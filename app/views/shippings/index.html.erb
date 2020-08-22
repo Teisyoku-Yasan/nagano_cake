@@ -1,0 +1,43 @@
+<div class="row">
+	<h3>配送先登録・一覧</h3>
+	<%= form_for @shipping do |f| %>
+		<div class="form-group row">
+			<%= f.label :postal_code, "郵便番号", class: "col-xs-2 col-form-label" %>
+			<%= f.text_field :postal_code, class: "col-xs-3" %>
+		</div>
+		<div class="form-group row">
+			<%= f.label :street_address, "住所", class: "col-xs-2 col-form-label" %>
+			<%= f.text_field :street_address, class: "col-xs-6" %>
+		</div>
+		<div class="form-group row">
+			<%= f.label :name, "宛名", class: "col-xs-2 col-form-label" %>
+			<%= f.text_field :name, class: "col-xs-3" %>
+		</div>
+		<%= f.submit "登録する", class: "btn btn-success col-xs-2 col-xs-offset-8" %>
+	<% end %>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>郵便番号</th>
+				<th>住所</th>
+				<th>宛名</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @shippings.each do |shipping| %>
+				<tr>
+					<th><%= shipping.postal_code %></th>
+					<th><%= shipping.street_address %></th>
+					<th><%= shipping.name %></th>
+					<th>
+						<%= link_to "編集する", edit_shipping_path(shipping), class: "btn btn-primary" %>
+						<%= link_to "削除する", shipping_path(shipping), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+					</th>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>
