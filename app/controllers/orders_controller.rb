@@ -4,19 +4,13 @@ class OrdersController < ApplicationController
   
   def index
     # 自分自身のユーザIDの注文履歴しか表示されないようにする
-    @orders = Order.where(customer_id: current_customer.id).page(params[:page])
+    @orders = Order.where(customer_id: current_customer.id).page(params[:page]).reverse_order
   end
   
   def create
     if current_customer.cart_items.exists?
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
-
-      # ここの1000をカートに入っていた商品の小計を合算した数字にする
-      # この合算をどうやればいいのかよく分からないー
-      @order.total_price = 1000
-      # @order.total_price = @order.cart_item.total_price
-
 
       # 住所のラジオボタン選択に応じて引数を調整
       @add = params[:order][:add].to_i

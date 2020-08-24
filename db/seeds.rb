@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Admin.create!(
-# 	email: 'test@test.com',
-# 	password: 'testtest'
-# 	)
+Admin.create!(
+	email: 'test@test.com',
+	password: 'testtest'
+	)
 
-# Genre.create!(
-# 	[{ name: 'ケーキ'},{ name: 'クッキー・焼き菓子'},{ name: 'チョコレート'}])
+Genre.create!(
+	[{ name: 'ケーキ'},{ name: 'クッキー・焼き菓子'},{ name: 'チョコレート'}])
 
 10.times do |i|
 	Product.create!(

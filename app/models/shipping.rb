@@ -7,6 +7,6 @@ class Shipping < ApplicationRecord
 
 	# お届け先のリストからフルアドレスを選ぶ時用
 	def full_shipping_name
-		self.postal_code + ' ' + self.street_address + ' ' + customer.full_name
+		self.postal_code + ' ' + self.street_address + ' ' + self.name
 	end
 end
