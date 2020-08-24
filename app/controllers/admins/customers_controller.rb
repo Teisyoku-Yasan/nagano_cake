@@ -22,6 +22,17 @@ class Admins::CustomersController < ApplicationController
         end
     end
 
+    #検索用アクション
+    def search
+        @customer_or_product = params[:option]
+        if @customer_or_product == "1"
+            @customers = Customer.search(params[:search], @customer_or_product)
+        else
+            @products = Product.search(params[:search], @customer_or_product)
+        end
+        @search = params[:search]
+    end
+
 
 
     private

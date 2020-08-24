@@ -1,0 +1,24 @@
+<% if @customer_or_product == "1" %>
+    <h2>会員名に '<%= @search %>' を含む</h2>
+    <div>
+        <% @customers.each do |customer| %>
+            <p><%= link_to admins_customer_path(customer) do %>
+                    <%= customer.last_name %><%= customer.first_name %>
+                <% end %>
+            </p>
+        <% end %>
+    </div>
+ 
+<% elsif @customer_or_product == "2" %>
+    <h2>商品名に '<%= @search %>' を含む</h2>    
+    <div>
+        <% @products.each do |product| %>
+            <p>
+                <%= link_to admins_product_path(product) do %>
+                    <%= product.name %>
+                <% end %>
+            </p>
+        <% end %>
+    </div>
+<% else %>
+<% end %>

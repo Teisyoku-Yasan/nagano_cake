@@ -19,4 +19,13 @@ class Product < ApplicationRecord
 		@price.round
 	end
 
+	#商品名で検索
+	def self.search(search, customer_or_product)
+  		if customer_or_product == "2"
+     		self.where(['name LIKE ?', "%#{search}%"])
+  		else
+     		self.all
+  		end
+	end
+
 end

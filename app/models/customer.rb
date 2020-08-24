@@ -16,4 +16,13 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :street_address, presence: true
   validates :phone_num, presence: true
+
+  #会員名で検索
+  def self.search(search, customer_or_product)
+    if customer_or_product == "1"
+      self.where(['last_name LIKE ? OR first_name LIKE ?',"%#{search}%", "%#{search}%"])
+    else
+       self.all
+    end
+  end
 end
