@@ -1,5 +1,7 @@
 class CustomersController < ApplicationController
 
+
+
 	def show
 		@customer = Customer.find(params[:id])
 	end
@@ -15,6 +17,16 @@ class CustomersController < ApplicationController
 		else
 			render 'edit'
 		end
+	end
+
+	def unsubscribe
+	end
+
+	def withdraw
+		@customer = Customer.find(params[:id])
+		@customer.update(is_deleted: "Invalid")
+		reset_session
+		redirect_to root_path
 	end
 
 	private

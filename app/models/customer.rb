@@ -16,4 +16,11 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :street_address, presence: true
   validates :phone_num, presence: true
+
+  enum is_deleted: {Available: true, Invalid: false}
+
+  def active_for_authentication?
+    super && (self.is_deleted === "Available")
+  end
+
 end
