@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :shippings, dependent: :destroy
-  
+
 
   # 会員バリデーション
   validates :last_name_kana, presence: true
@@ -25,4 +25,14 @@ class Customer < ApplicationRecord
        self.all
     end
   end
+
+  def active_for_authentication?
+    super && self.is_deleted == false
+  end
+
+  # フルネーム表示用
+  def full_name
+    self.last_name + self.first_name
+  end
+
 end
