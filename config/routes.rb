@@ -12,14 +12,13 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  get 'customers/:id' => 'customers#show', as: 'customer'
-  get 'customers/:id/edit' => 'customers#edit', as: 'edit_customer'
-  patch 'customers/:id' => 'customers#update', as: 'update_customer'
+  resource :customers, only: [:show, :edit, :update]
     #マイページ表示
+    get 'customers/my_page' => 'customers#show'
 
     #退会処理
-  get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
-  patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
+  get 'customers/unsubscribe' => 'customers/unsubscribe'
+  patch 'customers/withdraw' => 'customers/withdraw'
 
 
   resources :products, only: [:show, :index]

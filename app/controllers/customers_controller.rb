@@ -1,19 +1,19 @@
 class CustomersController < ApplicationController
 
-
+	before_action :authenticate_customer!
 
 	def show
-		@customer = Customer.find(params[:id])
+		@customer = Customer.find(current_customer.id)
 	end
 
 	def edit
-		@customer = Customer.find(params[:id])
+		@customer = Customer.find(current_customer.id)
 	end
 
 	def update
-		@customer = Customer.find(params[:id])
+		@customer = Customer.find(current_customer.id)
 		if @customer.update(customer_params)
-			redirect_to customer_path(@customer)
+			redirect_to customers_path
 		else
 			render 'edit'
 		end
@@ -23,15 +23,15 @@ class CustomersController < ApplicationController
 	end
 
 	def withdraw
-		@customer = Customer.find(params[:id])
-		@customer.update(is_deleted: "Invalid")
+		@customer = Customer.find(current_customer.id)
+		@customer.update(is_deleted: true)
 		reset_session
 		redirect_to root_path
 	end
 
 	private
 	def customer_params
-		params.require(:customer).permit(:last_name_kana, :first_name_kana, :last_name, :first_name, :postal_code, :street_address, :phone_num, :is_deleted, :email, :password)
+		params.require(:customer).permit(:last_name_kana, :first_name_kana, :last_name, :first_name, :postal_code, :street_address, :phone_num, :is_deleted, :email, :password, :active)
 	end
 
 end
