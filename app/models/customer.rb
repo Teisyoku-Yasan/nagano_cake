@@ -16,4 +16,10 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :street_address, presence: true
   validates :phone_num, presence: true
+
+  # フルネーム表示用
+  def full_name
+    self.last_name + self.first_name
+  end
+
 end
