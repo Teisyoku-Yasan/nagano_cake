@@ -20,7 +20,7 @@ class Customer < ApplicationRecord
   #会員名で検索
   def self.search(search, customer_or_product)
     if customer_or_product == "1"
-      self.where(['last_name LIKE ? OR first_name LIKE ?',"%#{search}%", "%#{search}%"])
+      self.find_by_sql(["select * from Customers where last_name || first_name LIKE ?", "%#{search}%"])
     else
        self.all
     end
