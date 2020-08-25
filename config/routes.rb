@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  resource :customers, only: [:edit, :update]
+  resource :customers, only: [:show, :edit, :update]
     #マイページ表示
   get 'customers/my_page' => 'customers#show'
 

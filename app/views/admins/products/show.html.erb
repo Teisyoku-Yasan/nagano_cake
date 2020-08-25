@@ -8,27 +8,27 @@
 			<table class="table">
 				<tbody>
 					<tr>
-						<td>商品名</td>
+						<th>商品名</th>
 						<td><%= @product.name %></td>
 					</tr>
 
 					<tr>
-						<td>商品説明</td>
+						<th>商品説明</th>
 						<td><%= @product.introduction %></td>
 					</tr>
 
 					<tr>
-						<td>ジャンル</td>
+						<th>ジャンル</th>
 						<td><%= @product.genre.name %></td>
 					</tr>
 
 					<tr>
-						<td>税込価格（税抜価格）</td>
+						<th>税込価格（税抜価格）</th>
 						<td><%= "#{(@product.price * 1.1).round }" %>(<%= "#{@product.price}円" %>)円</td>
 					</tr>
 
 					<tr>
-						<td>販売ステータス</td>
+						<th>販売ステータス</th>
 						<td><%= @product.is_active ? "販売中" : "販売停止中" %></td>
 					</tr>
 				</tbody>
