@@ -24,7 +24,7 @@ class Admins::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
-      redirect_to request.referer
+      redirect_to request.referer, notice: "注文ステータスを更新しました"
     else
       @order = Order.find(params[:id])
       @customer = @order.customer_id
