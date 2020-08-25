@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'home/top' => 'home#top'
+    #検索結果表示用
+    get 'search' => 'customers#search'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
