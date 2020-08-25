@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-	email: 'test@test.com',
-	password: 'testtest'
-	)
+ 	email: 'test@test.com',
+ 	password: 'testtest'
+ 	)
 
 Genre.create!(
 	[{ name: 'ケーキ'},{ name: 'クッキー・焼き菓子'},{ name: 'チョコレート'}])
@@ -19,7 +19,8 @@ Genre.create!(
 		name: "いちごケーキ#{i+1}",
 		introduction: 'おいしいいちごケーキです！',
 		genre_id: Genre.find(1).id,
-		price: 500
+		price: 500,
+		is_active: 'true'
 	)
 end
 
@@ -28,7 +29,8 @@ end
 		name: "チョコクッキー#{i+1}",
 		introduction: 'サクサクのチョコクッキーです',
 		genre_id: Genre.find(2).id,
-		price: 300
+		price: 300,
+		is_active: 'true'
 		)
 end
 
