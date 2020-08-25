@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   end
   
   def create
+    # カートに商品があれば「@order」を保存、カートが空であれば「cart_items」ページに戻る
     if current_customer.cart_items.exists?
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
@@ -52,10 +53,11 @@ class OrdersController < ApplicationController
         order_detail.save
         cart_item.destroy #order_detailに情報を移したらcart_itemは消去
       end
+
     render :thanks
 
     else
-      redirect_to cart_items_path, notice:"カートが空です"
+      redirect_to cart_items_path, notice: "カートが空です"
     end
 
   end

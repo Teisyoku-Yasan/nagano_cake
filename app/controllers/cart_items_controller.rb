@@ -23,18 +23,18 @@ class CartItemsController < ApplicationController
   def update
   	@cart_item = CartItem.find(params[:id])
   	@cart_item.update(cart_item_params)
-  	redirect_to request.referer
+  	redirect_to request.referer, notice: "カート内の商品の数量が変更されました"
   end
 
   def destroy
   	@cart_item = CartItem.find(params[:id])
   	@cart_item.destroy
-  	redirect_to request.referer
+  	redirect_to request.referer, notice: "カート内の商品が削除されました"
   end
 
   def destroy_all
   	current_customer.cart_items.destroy_all
-  	redirect_to request.referer
+  	redirect_to request.referer, notice: "カート内の全ての商品が削除されました"
   end
 
   private
