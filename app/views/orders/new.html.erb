@@ -1,0 +1,91 @@
+<h3>注文時情報入力</h3>
+
+<%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
+
+    <!-- A.支払方法 -->
+    <div class="row">
+        <h3><strong><%= f.label :支払方法 %></strong></h3>
+        <div class="col-lg-4 btn-group" data-toggle="buttons">
+            <%= f.radio_button :payment_method, true, {checked: true} %> <%= f.label :"クレジットカード" %> 
+            <br>
+            <%= f.radio_button :payment_method, false, {} %> <%= f.label :"銀行振込" %>
+        </div>
+    </div>
+
+
+    <!-- B.お届け先 -->
+    <div class="row">
+        <h3><strong><%= f.label :お届け先 %></strong></h3>
+
+        <!-- 自身の住所 -->
+        <div class="col-lg-8">
+            <label><%= f.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label>
+            <div class="row">
+                <div class="col-lg-offset-1">
+                    <p>
+                        <%= @customer.postal_code %> <%= @customer.street_address %><br>
+                        <%= @customer.full_name %>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 登録済み住所 -->
+        <div class="col-lg-8">
+            <label><%= f.radio_button :add, 2, style: "display: inline-block" %>登録住所から選択</label>
+            <div class="row">
+                <div class="col-lg-offset-1">
+                    <p><%= f.collection_select :street_address, @customer.shippings, :id, :full_shipping_name, {prompt:false}, {class:"form-control"} %><p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新しい住所 -->
+        <div class="col-lg-8">
+            <label><%= f.radio_button :add, 3 %>新しいお届け先</label>
+
+            <div class="row">
+                <div class="col-lg-offset-1">
+                    <%= f.fields_for :new_add do |na| %>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <p>郵便番号(ハイフンなし)</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p><%= na.text_field :postal_code, class: 'form-control' %></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <p>住所</p>
+                            </div>
+                            <div class="col-lg-9">
+                                <p><%= na.text_field :street_address, class: 'form-control' %></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <p>宛名</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p><%= na.text_field :name, class: 'form-control' %></p>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- お届け先ここまで -->
+
+    
+    <div class="row">
+        <div class="col">
+            <%= f.submit "確認画面へ進む", class: "btn btn-lg btn-primary center-block"%>
+        </div>
+    </div>
+
+  <% end %>

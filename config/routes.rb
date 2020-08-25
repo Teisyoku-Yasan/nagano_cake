@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resource :customers, only: [:show, :edit, :update]
     #マイページ表示
-    get 'customers/my_page' => 'customers#show'
+  get 'customers/my_page' => 'customers#show'
 
     #退会処理
   get 'customers/unsubscribe' => 'customers/unsubscribe'
