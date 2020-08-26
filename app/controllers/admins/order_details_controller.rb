@@ -4,22 +4,7 @@ class Admins::OrderDetailsController < ApplicationController
     def update
         @order_detail = OrderDetail.find(params[:id])
         if @order_detail.update(order_detail_params)
-            #製作ステータスが2(製作中)になったら注文ステータスも2(製作中)にする。
-            if @order_detail.making_status == 2
-                @order = Order.find(@order_detail.order_id)
-                @order.update(order_status: 2)
-                @order_detail.update(order_detail_params)
-                redirect_to request.referer
-            #１オーダー内の製作ステータスが全て3(製作完了)になったら注文ステータスを3(発送準備中)にする
-            elsif @order_detail.order.order_details.all?{|order_detail| order_detail.making_status == 3}
-                @order = Order.find(@order_detail.order_id)
-                @order.update(order_status: 3)
-                @order_detail.update(order_detail_params)
-                redirect_to request.referer
-            else
-                @order_detail.update(order_detail_params)
-                redirect_to request.referer
-            end
+
         else
             @order = Order.find(params[:id])
             @customer = @order.customer_id

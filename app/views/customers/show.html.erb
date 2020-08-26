@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container" style="width: 100%;height: 799px;">
+	<div style="width: 100%;height: 150px;"></div>
 	<div class="row">
-		<h2>マイページ</h2>
+		<h2 style="width: 150px;height: 50px;border-radius: 15px;background-color: rgba( 135, 135, 135, 0.55 );font-size: 23px;font-weight: bold;text-align: center;padding-top: 12px;margin-bottom: 40px;">マイページ</h2>
 		<strong>登録情報</strong>
 		<%= link_to '編集する',edit_customers_path, class: "btn btn-primary" %>
 		<%= link_to 'パスワードを変更する', new_customer_password_path(@customer), class: "btn btn-primary" %>
-		<table class="table">
+		<table class="table" style="margin-top: 30px;">
 			<tr>
 				<td>氏名</td>
 				<td><%= @customer.last_name %> <%= @customer.first_name %></td>
@@ -37,12 +38,12 @@
 		</table>
 	</div>
 
-	<div class="row">
+	<div class="row" style="margin-top: 40px;">
 		<strong>配送先　</strong>
 		<%= link_to '一覧を見る', shippings_path, class: "btn btn-primary" %>
 	</div>
 
-	<div class="row">
+	<div class="row" style="margin-top: 20px;margin-bottom: 30px;">
 		<strong>注文履歴</strong>
 		<%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %>
 	</div>

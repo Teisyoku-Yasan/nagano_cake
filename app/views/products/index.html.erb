@@ -1,16 +1,22 @@
 <div class="row">
-
-	<div class="col-sm-3">
-		<h4>ジャンル検索</h4>
-		<% @genres.each do |genre| %>
-			<%= link_to genre_path(genre) do %>
-				<p><%= genre.name %></p>
-			<% end %>
-		<% end %>
+    <div style="width: auto;height: 130px;">
+    </div>
+	<div class="col-sm-3" style="height: 800px;">
+		<div style="width: 250px;height:400px;background-color: rgba( 135, 135, 135, 0.55 );border-radius: 15px;">
+          <div style="text-align: center;font-size: 23px;margin-top: 20px;padding-top: 19px;font-weight:bold;">ジャンル検索</div>
+		    <div style="margin-left: 30px;margin-top: 30px;">
+		    <% @genres.each do |genre| %>
+			    <%= link_to genre_path(genre) do %>
+				    <p><%= genre.name %></p>
+			    <% end %>
+		    <% end %>
+		    </div>
+        </div>
 	</div>
-	
+    
 	<div class="col-sm-9">
-		<h3>商品一覧<span>(全<%= @product.count %>件)</span></h3>
+	  <div style="width: 950px;height: 600px;background-color: rgba( 135, 135, 135, 0.55 );border-radius: 15px;margin-top: 20px;padding-top: 1px;padding-left: 25px;">
+		<div style="font-weight:bold;font-size: 23px;margin-top: 16px;">商品一覧<span>(全<%= @product.count %>件)</span></div>
 		<% @products.each do |product| %>
 			<%= link_to product_path(product) do %>
 				<%= attachment_image_tag product, :image_id, :fill, 160, 120, format: 'png',fallback: "no_image.png",size:'160x120' %>
@@ -20,8 +26,7 @@
 
 		<% end %>
 		<%= paginate @products %>
+	  </div>
 	</div>
 		
 </div>
-
-
