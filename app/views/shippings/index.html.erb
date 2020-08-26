@@ -1,22 +1,23 @@
-<div class="row">
-	<h3>配送先登録・一覧</h3>
+<div style="width: 100%;height: 150px;"></div>
+<div class="row"style="height: 649px;">
+	<h3 style="width: 230px;height: 50px;  border-radius: 15px;background-color: rgba( 135, 135, 135, 0.55 );font-size: 23px;font-weight: bold;text-align: center;padding-top: 12px;">配送先登録・一覧</h3>
 	<%= form_for @shipping do |f| %>
-		<div class="form-group row">
+		<div class="form-group row" style="padding-top: 40px;">
 			<%= f.label :postal_code, "郵便番号", class: "col-xs-2 col-form-label" %>
 			<%= f.text_field :postal_code, class: "col-xs-3" %>
 		</div>
-		<div class="form-group row">
+		<div class="form-group row" style="padding-top: 20px;">
 			<%= f.label :street_address, "住所", class: "col-xs-2 col-form-label" %>
 			<%= f.text_field :street_address, class: "col-xs-6" %>
 		</div>
-		<div class="form-group row">
+		<div class="form-group row" style="padding-top: 20px;padding-bottom: 50px;">
 			<%= f.label :name, "宛名", class: "col-xs-2 col-form-label" %>
 			<%= f.text_field :name, class: "col-xs-3" %>
 		</div>
 		<%= f.submit "登録する", class: "btn btn-success col-xs-2 col-xs-offset-8" %>
 	<% end %>
 
-	<table class="table table-bordered">
+	<table class="table table-bordered" style="margin-top: 100px;">
 		<thead>
 			<tr>
 				<th>郵便番号</th>

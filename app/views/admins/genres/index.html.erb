@@ -1,6 +1,7 @@
 <div class="row">
-	<h2>ジャンル一覧・追加</h2>
-	<label>ジャンル</label>
+	<div style="width: 100%;height: 150px;"></div>
+	<h2 style="width: 250px;height: 50px;background-color: rgba( 135, 135, 135, 0.55 );border-radius: 15px;text-align: center;font-size:23px;font-weight: bold;padding-top: 13px;">ジャンル一覧・追加</h2>
+	<label style="margin-top: 50px;">ジャンル</label>
 
 	<%= form_for @genre, url: admins_genres_path do |f| %>
 		<%= f.text_field :name %>
@@ -11,7 +12,7 @@
 		<%= f.submit '追加' %>
 	<% end %>
 
-	<table class="table">
+	<table class="table" style="height: 446px;" >
 		<tr>
 			<th>ジャンル</th>
 			<th>状態</th>
