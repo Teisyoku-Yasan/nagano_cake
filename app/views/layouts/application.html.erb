@@ -15,8 +15,8 @@
 
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <span style="font-size: 30px;">
-            <%= link_to "NaganoCake", root_path %> 
+          <span style="font-size: 70px;font-weight:bold;color: white;">
+            <%= link_to "NaganoCake", root_path %>
           </span>
           <% if customer_signed_in? %>
               <span>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</span>
@@ -24,7 +24,7 @@
         </nav>
 
         <nav>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" style="margin-top: 45px;font-size: 15px;">
             <% if customer_signed_in? %>
               <li><%= link_to "マイページ", customers_my_page_path %></li>
               <li><%= link_to "商品一覧", products_path %></li>

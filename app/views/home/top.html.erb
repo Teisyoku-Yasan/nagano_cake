@@ -1,14 +1,37 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
+<div class="container">
+	<!-- <h1>Home#index</h1>../../assets/images/background.jpg
+	<p>Find me in app/views/home/index.html.erb</p>
+    -->
+	<br>
+	<br>
+    <div style="width: auto;height: 100px;">
+    </div>
+    <div style="display:inline-block; width: 250px;height:400px;background-color: rgba( 135, 135, 135, 0.55 );border-radius: 15px;margin-right: 20px;padding-top: 10px;">
+      <div style="text-align: center;font-size: 23px;font-weight: bold;">
+      	ジャンル検索
+      </div>
+    </div>
+    <div style="display:inline-block; width: 800px; height: 400px;vertical-align: top;background-color: rgba( 135, 135, 135, 0.55 );border-radius: 15px;margin-left:20px;margin-bottom: 50px;">
+      <div style="text-align: center;margin-top: 95px;font-size: 22px;">
+      	ようこそ、NaganoCakeへ！<br>
+      	<br>
+このサイトは、ケーキ販売のECサイトになります。<br>
 <br>
+会員でない方も商品の閲覧はできますが、<br>
 <br>
+購入には会員登録が必要になります。</div>
+    </div>
+    <div style="width: auto; height: 300px;background-color: rgba( 135, 135, 135, 0.55 );margin-left: 250px;font-size: 23px;font-weight:bold;border-radius: 15px;padding-left: 20px; padding-top: 10px;">
+      <p>おすすめ商品</p>
+      <div style="display:inline-block; width: 150px; height: 150px;"></div>
+      <div style="display:inline-block; width: 150px; height: 150px;"></div>
+      <div style="display:inline-block; width: 150px; height: 150px;"></div>
+      <div style="display:inline-block; width: 150px; height: 150px;"></div>
+    </div>
+    <br>
+	<%= link_to "管理者ログイン", new_admin_session_path %> / <%= link_to "管理者登録", new_admin_registration_path %>
 
+	<br>
 
-<%= link_to "管理者ログイン", new_admin_session_path %> / <%= link_to "管理者登録", new_admin_registration_path %>
-
-<br>
-<br>
-<br>
-
-<%= link_to "会員ログイン", new_customer_session_path %> / <%= link_to "会員登録", new_customer_registration_path %>
+	<%= link_to "会員ログイン", new_customer_session_path %> / <%= link_to "会員登録", new_customer_registration_path %>
+</div>
