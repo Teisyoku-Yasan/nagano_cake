@@ -17,14 +17,19 @@
 	<div class="col-sm-9">
 	  <div style="width: 950px;height: 600px;background-color: rgba( 135, 135, 135, 0.55 );border-radius: 15px;margin-top: 20px;padding-top: 1px;padding-left: 25px;">
 		<div style="font-weight:bold;font-size: 23px;margin-top: 16px;">商品一覧<span>(全<%= @product.count %>件)</span></div>
-		<% @products.each do |product| %>
-			<%= link_to product_path(product) do %>
-				<%= attachment_image_tag product, :image, :fill, 160, 120, format: 'png',fallback: "no_image.png",size:'160x120' %>
-				<p><%= product.name %></p>
-				<p>¥<%= product.syouhizei(product.price) %></p>
-			<% end %>
 
-		<% end %>
+		<div style=" display: flex; flex-wrap: wrap; align-content: center;">
+			<% @products.each do |product| %>
+				<div style=" margin:10px;">
+					<%= link_to product_path(product) do %>
+						<%= attachment_image_tag product, :image, :fill, 200, 150, format: 'png',fallback: "no_image.png",size:'200x150' %>
+						<p><%= product.name %></p>
+						<p>¥<%= product.syouhizei(product.price) %></p>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+
 		<%= paginate @products %>
 	  </div>
 	</div>
