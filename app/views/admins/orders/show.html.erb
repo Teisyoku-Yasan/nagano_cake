@@ -52,9 +52,10 @@
                     <td><%= order_detail.quantity %></td>
                     <td><%= order_detail.price * order_detail.quantity %></td>
                     <td>
-                        <%= form_for(order_detail, url:admins_order_detail_path) do |f| %>
+                        <%# form の urlに (order_detail.id)がなかったので、うまく渡せておらずエラーになってました。 %>
+                        <%= form_for(order_detail, url: admins_order_detail_path(order_detail.id)) do |f| %>
                             <%= f.select :making_status, {"着手不可": 0, "製作待ち": 1, "製作中": 2, "製作完了": 3}, {class:"form-control"} %>
-                            <%= f.submit "更新", class:"btn btn-sm btn-primary" %></td>
+                            <%= f.submit "更新", class:"btn btn-sm btn-primary" %>
                         <% end %>
                     </td>
                 </tr>
