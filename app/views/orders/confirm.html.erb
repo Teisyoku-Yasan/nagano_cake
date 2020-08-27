@@ -63,7 +63,7 @@
                     <% if @order.payment_method == 0 %>
                         クレジットカード
                     <% elsif @order.payment_method == 1 %>
-                        銀行振り込み
+                        銀行振込
                     <% end %>
             </div>
         </div>
@@ -84,6 +84,7 @@
         <%= f.hidden_field :name, :value => "#{@order.name}" %>
         <%# 送料抜いた商品合計をtotal_priceに保存 %>
         <%= f.hidden_field :total_price, :value => sum_all %>
+        <%= f.hidden_field :payment_method, :value => @order.payment_method %>
 
 
         <div class="row" style="margin-top: 100px;">

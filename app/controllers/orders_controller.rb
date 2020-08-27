@@ -114,7 +114,7 @@ class OrdersController < ApplicationController
         :name,
         :total_price,
         :payment_method,
-        order_details_attributes:[:prodict_id, :order_id, :quantity, :price]
+        order_details_attributes:[:product_id, :order_id, :quantity, :price]
       )
     end
 

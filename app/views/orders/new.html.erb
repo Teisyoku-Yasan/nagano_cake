@@ -8,9 +8,9 @@
     <div class="row">
         <h3><strong><%= f.label :支払方法 %></strong></h3>
         <div class="col-lg-4 btn-group" data-toggle="buttons">
-            <%= f.radio_button :payment_method, true, {checked: true} %> <%= f.label :"クレジットカード" %> 
+            <%= f.radio_button :payment_method, "0", {checked: true} %> <%= f.label :"クレジットカード" %> 
             <br>
-            <%= f.radio_button :payment_method, false, {} %> <%= f.label :"銀行振込" %>
+            <%= f.radio_button :payment_method, "1", {} %> <%= f.label :"銀行振込" %>
         </div>
     </div>
 
