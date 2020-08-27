@@ -5,8 +5,10 @@
 		  <div style="height: 635px;">
 			<div style="width:140px;height:50px;border-radius: 15px;background-color: rgba( 135, 135, 135, 0.55 );font-size: 23px;font-weight: bold;text-align: center;padding-top: 9px;">商品一覧</div>
 
-			<div class="new-btn-wrap" style="margin-top: 40px;">
-				<%= link_to "商品登録", new_admins_product_path, class: "btn btn-primary btn-new-register btn-lg"; %>
+			<div class="social pull-right" style="margin-top: 40px;">
+				<%= link_to (new_admins_product_path) do %>
+					<i class="fas fa-plus-circle fa-3x"></i>
+				<% end %>
 			</div>
 
 			<table class="table" style="margin-top: 50px;padding-left: 10px;">
@@ -32,7 +34,9 @@
 					<% end %>
 				</tbody>
 			</table>
-			<%= paginate @products %>
+			<div class="paginate col-xs-2 col-xs-offset-5">
+				<%= paginate @products %>
+			</div>
 		    </div>
 		</div>
 	</div>
