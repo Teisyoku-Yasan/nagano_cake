@@ -29,7 +29,7 @@
                         </td>
                         <td>
                             <% claimed = order.total_price + order.freight %>
-                            <%= claimed.to_s(:delimited) %>
+                            <%= claimed.to_s(:delimited) %>円
                         </td>
                         <td>
                             <% if order.order_status == 0 %>

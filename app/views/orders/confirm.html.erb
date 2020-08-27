@@ -19,10 +19,10 @@
                         <% @cart_items.each do |cart_item| %>
                             <tr>
                                 <td>
-                                    <%= attachment_image_tag cart_item.product, :image_id, :fill, 60, 45, format: 'png',fallback: "no_image.png",size:'60x45' %>
+                                    <%= attachment_image_tag cart_item.product, :image, :fill, 60, 45, format: 'png',fallback: "no_image.png",size:'60x45' %>
                                     <%= cart_item.product.name %>
                                 </td>
-                                <td><%= cart_item.product.syouhizei(cart_item.product.price) %></td>
+                                <td><%= cart_item.product.syouhizei(cart_item.product.price).to_s(:delimited) %></td>
                                 <td><%= cart_item.quantity %></td>
                                 <td>
                                     <%= cart_item.subtotal %>
@@ -38,7 +38,7 @@
                 <table class="table table-bordered" style="margin-top: 40px;">
                     <tr>
                         <th>送料</th>
-                        <td><%= @order.freight %></td>
+                        <td><%= @order.freight.to_s(:delimited) %></td>
                     </tr>
                     <tr>
                         <th>商品合計</th>

@@ -21,10 +21,10 @@
 					<% @cart_items.each do |cart| %>
 						<tr>
 							<td>
-								<%= attachment_image_tag cart.product, :image_id, :fill, 60, 45, format: 'png',fallback: "no_image.png",size:'60x45'  %>
+								<%= attachment_image_tag cart.product, :image, :fill, 60, 45, format: 'png',fallback: "no_image.png",size:'60x45'  %>
 								<%= cart.product.name %>
 							</td>
-							<td><%= cart.product.syouhizei(cart.product.price) %></td>
+							<td><%= cart.product.syouhizei(cart.product.price).to_s(:delimited) %></td>
 							<td>
 								<%= form_for cart do |f| %>
 									<%= f.number_field :quantity, value: cart.quantity %>

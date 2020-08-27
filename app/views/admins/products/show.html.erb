@@ -24,7 +24,7 @@
 
 					<tr>
 						<th>税込価格（税抜価格）</th>
-						<td><%= "#{(@product.price * 1.1).round }" %>(<%= "#{@product.price}円" %>)円</td>
+						<td><%= "#{(@product.price * 1.08).round.to_s(:delimited) }" %>(<%= @product.price.to_s(:delimited) %>)円</td>
 					</tr>
 
 					<tr>
