@@ -1,5 +1,6 @@
 class ShippingsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :set_shipping, only: [:edit, :update, :destroy]
 
 
   def index
@@ -19,11 +20,9 @@ class ShippingsController < ApplicationController
   end
 
   def edit
-  	@shipping = Shipping.find(params[:id])
   end
 
   def update
-  	@shipping = Shipping.find(params[:id])
   	if @shipping.update(shipping_params)
       redirect_to shippings_path, notice: "住所の変更が完了しました"
     else
@@ -32,7 +31,6 @@ class ShippingsController < ApplicationController
   end
 
   def destroy
-  	@shipping = Shipping.find(params[:id])
   	@shipping.destroy
   	redirect_to request.referer, notice: "住所の削除が完了しました"
   end
@@ -42,4 +40,9 @@ class ShippingsController < ApplicationController
   def shipping_params
   	params.require(:shipping).permit(:postal_code, :street_address, :name)
   end
+
+  def set_shipping
+    @shipping = Shipping.find(params[:id])
+  end
+
 end

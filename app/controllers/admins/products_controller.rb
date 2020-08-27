@@ -1,5 +1,5 @@
 class Admins::ProductsController < ApplicationController
-
+	before_action :set_product, only: [:show, :edit, :update]
 
 
 	def index
@@ -21,15 +21,12 @@ class Admins::ProductsController < ApplicationController
 	end
 
 	def show
-		@product = Product.find(params[:id])
 	end
 
 	def edit
-		@product = Product.find(params[:id])
 	end
 
 	def update
-		@product = Product.find(params[:id])
 		if @product.update(product_params)
 			redirect_to admins_product_path(@product.id), notice: "商品情報を更新しました"
 		else
@@ -40,6 +37,10 @@ class Admins::ProductsController < ApplicationController
 	private
 	def product_params
 		params.require(:product).permit(:genre_id, :name, :image, :introduction, :price, :is_active)
+	end
+
+	def set_product
+		@product = Product.find(params[:id])
 	end
 
 end

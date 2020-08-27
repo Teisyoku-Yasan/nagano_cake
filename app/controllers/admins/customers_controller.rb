@@ -1,20 +1,18 @@
 class Admins::CustomersController < ApplicationController
     before_action :authenticate_admin!
+    before_action :set_customer, only: [:show, :edit, :update]
 
     def index
         @customers = Customer.page(params[:page])
     end
 
     def show
-        @customer = Customer.find(params[:id])
     end
 
     def edit
-        @customer = Customer.find(params[:id])
     end
     
     def update
-        @customer = Customer.find(params[:id])
         if @customer.update(customer_params)
             redirect_to admins_customer_path(@customer), notice: "会員情報を更新しました"
         else
@@ -33,8 +31,6 @@ class Admins::CustomersController < ApplicationController
         @search = params[:search]
     end
 
-
-
     private
         def customer_params
             params.require(:customer).permit(
@@ -46,6 +42,10 @@ class Admins::CustomersController < ApplicationController
             :street_address, 
             :phone_num, 
             :is_deleted)
+        end
+
+        def set_customer
+            @customer = Customer.find(params[:id])
         end
 
 

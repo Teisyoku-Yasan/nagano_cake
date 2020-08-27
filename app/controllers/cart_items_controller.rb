@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
 	before_action :authenticate_customer!
+  before_action :set_cart_item, only: [:update, :destroy]
 
   def create
   	@cart_item = current_customer.cart_items.build(cart_item_params)
@@ -21,13 +22,11 @@ class CartItemsController < ApplicationController
   end
 
   def update
-  	@cart_item = CartItem.find(params[:id])
   	@cart_item.update(cart_item_params)
   	redirect_to request.referer, notice: "カート内の商品の数量が変更されました"
   end
 
   def destroy
-  	@cart_item = CartItem.find(params[:id])
   	@cart_item.destroy
   	redirect_to request.referer, notice: "カート内の商品が削除されました"
   end
@@ -39,9 +38,13 @@ class CartItemsController < ApplicationController
 
   private
 
-  def cart_item_params
-  	params.require(:cart_item).permit(:product_id, :quantity)
-  end
+    def cart_item_params
+  	 params.require(:cart_item).permit(:product_id, :quantity)
+    end
+
+    def set_cart_item
+      @cart_item = CartItem.find(params[:id])
+    end
 
 
   end
