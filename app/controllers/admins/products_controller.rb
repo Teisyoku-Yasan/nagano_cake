@@ -4,7 +4,7 @@ class Admins::ProductsController < ApplicationController
 
 	def index
 		@product = Product.new
-		@products = Product.page(params[:page]).reverse_order
+		@products = Product.page(params[:page])
 	end
 
 	def new
@@ -14,7 +14,7 @@ class Admins::ProductsController < ApplicationController
 	def create
 		@product = Product.new(product_params)
 		if @product.save
-			redirect_to admins_products_path, notice: "新しい商品を追加しました"
+			redirect_to admins_product_path(@product), notice: "新しい商品を追加しました"
 		else
 			render :new
 		end
