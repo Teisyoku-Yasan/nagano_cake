@@ -1,43 +1,40 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-		  <div style="width: 100%;height: 164px;"></div>
-		  <div style="height: 635px;">
-			<div style="width:140px;height:50px;border-radius: 15px;background-color: rgba( 135, 135, 135, 0.55 );font-size: 23px;font-weight: bold;text-align: center;padding-top: 9px;">商品一覧</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div style="height: 635px;">
+		<h3 style="width: 180px;height: 50px;border-radius: 15px;background-color: rgba( 135, 135, 135, 0.55 );font-size: 23px;font-weight: bold;text-align: center;padding-top: 12px;">商品一覧</h3>
 
-			<div class="social pull-right" style="margin-top: 40px;">
-				<%= link_to (new_admins_product_path) do %>
-					<i class="fas fa-plus-circle fa-3x"></i>
+		<div class="social pull-right" style="margin-top: 40px;">
+			<%= link_to (new_admins_product_path) do %>
+				<i class="fas fa-plus-circle fa-3x"></i>
+			<% end %>
+		</div>
+
+		<table class="table" style="margin-top: 50px;padding-left: 10px;">
+			<thead>
+				<tr>
+					<th>商品ID</th>
+					<th>商品名</th>
+					<th>税抜価格</th>
+					<th>ジャンル</th>
+					<th>ステータス</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @products.each do |product| %>
+				<tr>
+					<td><%= product.id %></td>
+					<td><%= link_to product.name, admins_product_path(product.id) %></td>
+					<td><%= product.price.to_s(:delimited) %></td>
+					<td><%= product.genre.name %></td>
+					<td><%= product.is_active ? "販売中" : "販売停止中" %></td>
+				</tr>
 				<% end %>
-			</div>
-
-			<table class="table" style="margin-top: 50px;padding-left: 10px;">
-				<thead>
-					<tr>
-						<th>商品ID</th>
-						<th>商品名</th>
-						<th>税抜価格</th>
-						<th>ジャンル</th>
-						<th>ステータス</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<% @products.each do |product| %>
-					<tr>
-						<td><%= product.id %></td>
-						<td><%= link_to product.name, admins_product_path(product.id) %></td>
-						<td><%= product.price.to_s(:delimited) %></td>
-						<td><%= product.genre.name %></td>
-						<td><%= product.is_active ? "販売中" : "販売停止中" %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-			<div class="paginate col-xs-2 col-xs-offset-5">
-				<%= paginate @products %>
-			</div>
-		    </div>
+			</tbody>
+		</table>
+		<div class="paginate col-xs-2 col-xs-offset-5">
+			<%= paginate @products %>
+		</div>
 		</div>
 	</div>
 </div>
