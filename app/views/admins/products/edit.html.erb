@@ -1,64 +1,69 @@
-<div class="container">
-	<div class="row">
-		<h3>商品編集</h3><br>
-		<%= form_for(@product, url: admins_product_path) do |f| %>
+<div class="row">
+
+	<h3 style="width:140px;height:50px;border-radius: 15px;background-color: rgba( 135, 135, 135, 0.55 );font-size: 23px;font-weight: bold;text-align: center;padding-top: 9px;">商品編集</h3>
+
+	<%= form_for(@product, url: admins_product_path) do |f| %>
+		<%= render 'layouts/error_messages', object: f.object %>
 		<div class="col-xs-5">
 			<div class="product-img">
-			<%= attachment_image_tag @product, :image, :size => '300x250', id: "file-preview",fallback: "no_image.png",size:'300x250' %>
-		    </div>
+				<%= attachment_image_tag @product, :image, :size => '300x250', id: "file-preview",fallback: "no_image.png",size:'300x250' %>
+			</div>
 			<div class="product-new-form">
 				<%= f.attachment_field :image, id: "product_img" %>
 			</div>
-	    </div>
-	    <%# 画像をプレビュー表示する %>
-	    <script type="text/javascript">
-  			$(function() {
-    			function readURL(input) {
-        			if (input.files && input.files[0]) {
-        			var reader = new FileReader();
-        			reader.onload = function (e) {
-    			$('#file-preview').attr('src', e.target.result);
-        		}
-        		reader.readAsDataURL(input.files[0]);
-        		}
-    		}
-    		$("#product_img").change(function(){
-        		readURL(this);
-    		});
-  			});
+		</div>
+		<%# 画像をプレビュー表示する %>
+		<script type="text/javascript">
+			$(function() {
+				function readURL(input) {
+					if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+				$('#file-preview').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+				}
+			}
+			$("#product_img").change(function(){
+				readURL(this);
+			});
+			});
 		</script>
 
 
-	    <div class="col-xs-5">
-	    	<table class="table">
-	    		<tbody>
-	    			<tr>
-	    				<th>商品名</th>
-	    				<td><%= f.text_field :name, class: "form-control" %></td>
-	    			</tr>
-	    			<tr>
-	    				<th>商品説明</th>
-	    				<td><%= f.text_area :introduction, class: "form-control" %></td>
-	    			</tr>
-	    			<tr>
-	    				<th>ジャンル</th>
-	    				<td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
-	    			</tr>
-	    			<tr>
-	    				<th>税抜価格</th>
-	    				<td><%= f.text_field :price, class: "form-control" %></td>
-	    				<td>円</td>
-	    			</tr>
-	    			<tr>
-	    				<th>販売ステータス</th>
-	    				<td><%= f.select :is_active, [["販売停止中",0],["販売中",1]], include_blank: "--選択してください--" %></td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </div>
-	    <div class="col-xs-2">
-	    	<%= f.submit '変更を保存', class: "btn btn-primary btn-new-register btn-lg" %>
-	    </div>
-	    <% end %>
-	</div>
+		<div class="col-xs-5">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>商品名</th>
+						<td><%= f.text_field :name, class: "form-control" %></td>
+					</tr>
+					<tr>
+						<th>商品説明</th>
+						<td><%= f.text_area :introduction, class: "form-control" %></td>
+					</tr>
+					<tr>
+						<th>ジャンル</th>
+						<td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+					</tr>
+					<tr>
+						<th>税抜価格</th>
+						<td><%= f.text_field :price, class: "form-control" %></td>
+						<td>円</td>
+					</tr>
+					<tr>
+						<th>販売ステータス</th>
+						<td><%= f.select :is_active, [["販売停止中",0],["販売中",1]], prompt: "--選択してください--" %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-9">
+				<%= f.submit '変更を保存', class: "btn btn-primary btn-new-register btn-lg" %>
+			</div>
+		</div>
+
+	<% end %>
+	
 </div>

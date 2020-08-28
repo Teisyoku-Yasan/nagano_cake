@@ -63,16 +63,20 @@
         </div>
       <% end %>
 
-
     </header>
 
 
-    <%#　各ページのcontainerをまとめて書きました %>
-    <div class="container", style="padding-top: 60px;">
-      <%#　flashメッセージ表示場所 %>
-      <p id="notice"><%= notice %></p>
+    <%#　flashメッセージ表示場所 %>
+    <% if flash[:notice] %>
+      <div id="flash" class="alert alert-success" role="alert" style="position: absolute; top: 200px; left: 150px;">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <div class="container", style="padding-top: 270px; padding-bottom: 80px;">
       <%= yield %>
     </div>
+
 
     <footer>
       <div class="container">
@@ -85,6 +89,7 @@
         </div>
       </div>
     </footer>
+
 
   </body>
 </html>
