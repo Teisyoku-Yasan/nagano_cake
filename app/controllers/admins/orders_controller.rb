@@ -1,5 +1,6 @@
 class Admins::OrdersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_order, only: [:show, :update]
 
   def index
     # 変移元のページによって商品の一覧表示を切り替える
@@ -16,13 +17,11 @@ class Admins::OrdersController < ApplicationController
   end
   
   def show
-    @order = Order.find(params[:id])
     @customer = @order.customer_id
     @order_details = OrderDetail.where(order_id: @order.id)
   end
   
   def update
-    @order = Order.find(params[:id])
     if @order.update(order_params)
       # 注文ステータスが1（入金確認）になったら、製作ステータスを1（制作待ち）にする
       if @order.order_status == 1
@@ -32,7 +31,6 @@ class Admins::OrdersController < ApplicationController
         redirect_to request.referer, notice: "注文ステータスを更新しました"
       end
     else
-      @order = Order.find(params[:id])
       @customer = @order.customer_id
       @order_details = OrderDetail.where(order_id: @order.id)
       render :show
@@ -42,6 +40,10 @@ class Admins::OrdersController < ApplicationController
   private
     def order_params
       params.require(:order).permit(:order_status)
+    end
+
+    def set_order
+      @order = Order.find(params[:id])
     end
 
 end
